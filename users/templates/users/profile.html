@@ -1,0 +1,25 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+	<div class="media profile mt-4 text-primary">
+		<img class="rounded-circle account-img" src = {{ user.profile.image.url }}>
+		<div class="media-body ml-3">
+			<h2 class="account-heading border-bottom">{{user.username}}</h2>
+			<p class="text-secondary ">{{user.email}}</p>
+			<a class="btn btn-outline-info" style="margin-left: 15rem;" href="{% url 'password-reset' %}">Reset Password</a>
+		</div>
+	</div>
+
+	<div class="col-md-12 mt-3 text-warning">
+		<form method="POST" enctype="multipart/form-data" class="update-form">
+			{% csrf_token %}
+			<fieldset class="form-group">
+				<legend class="border-bottom mb-3 pb-1" style="text-align: center;">Profile Info</legend>
+				{{u_form | crispy}}
+				{{p_form | crispy}}
+			</fieldset>
+				<button class="btn btn-outline-info" type="submit">Update</button>
+		</form>
+	</div>
+{% endblock content %}

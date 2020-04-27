@@ -1,0 +1,117 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	{% if title %}
+		<title>{{title}}</title>
+	{% else %}
+		<title>My Blog</title>
+	{% endif %}
+
+	<link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'blog/bootstrap.css' %}">
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+<body>
+
+	<nav class=" navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="/">Buzz-Feed</a>
+<!-- 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+		</button> -->
+	  	<div class="collapse navbar-collapse" id="navbarNavDropdown">
+		    <ul class="navbar-nav">
+		      	<li class="nav-item">
+		        	<a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+		     	 </li>
+		      	<li class="nav-item">
+		        	<a class="nav-link" href="{% url 'Blog-About' %}">About</a>
+		      	</li>
+		    {% if user.is_authenticated %}
+		    	<div class="profile-name">	
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'profile' %}">{{user}}</a>
+					</li>
+		    	</div>
+		      	<div class="user-login">
+				    <li class="nav-item">
+						<a class="nav-link" href="{% url 'post-create' %}">New Post</a>
+				    </li>
+			       <li class="nav-item">
+			       		<a class="nav-link" href="{% url 'logout' %}">Logout</a>
+				    </li>
+				</div>
+			{% else %}
+				<div class="user-login">	
+			    	<!-- <div class="profile-name">	
+						<li class="nav-item">
+							<a class="nav-link" href="#"></a>
+						</li>
+			    	</div> -->
+					<li class="nav-item">
+				    	<a class="nav-link" href="{% url 'login' %}">Login</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'register' %}">Register</a>
+					</li>
+				</div>
+			{% endif %}
+		     </ul>
+	  	</div>
+	</nav>
+	
+	{% block extra %} {% endblock extra %}	
+	<div class="main-block mb-4">
+		<div class="post-content col-md-6">
+			{% if messages %}
+			{% for message in messages %}
+				<div class="alert alert-{{message.tags}} p-2 mt-3">
+					{{ message }}
+				</div>
+			{% endfor %}
+			{% endif %}
+			{% block content %} {% endblock content %}	
+		</div>
+		<div class="sidebar-wrapper">	
+			<div class="sidebar ">
+				<h3>Share With Us</h3>
+				<h5>Song Stuffs</h5>
+				<h5>Movie Stuff</h5>
+				<h5>What's Cookin Now</h5>
+			</div>	
+		</div>
+	</div>
+
+
+<div class="footer text-center">
+	<h5 class="pt-2">Created With <span id="heart">&hearts;</span> By NiteshBabu</h2>
+	<div class="footer-details text-center">
+		<div class="contact-details">
+			<p class="border-bottom ml-4 mr-2">Contact Details</p>
+			<ul style="list-style: none;" class="text-left ">
+				<li>Email : niteshbabusharma@gmail.com</li>
+				<li>Phone : +91 700-415-2577</li>
+				<li>New Delhi, India</li>
+			</ul>
+		</div>
+		<div class="sitemap">
+			<ul style="list-style: none">
+				<li><a href="{% url 'Blog-Home' %}">Home</a></li>
+				<li><a href="/about">About</a></li>
+			</ul>
+			<div class="social-icons">
+				<li class="social-icon"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>			
+				<li class="social-icon"><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+				<li class="social-icon"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+				<li class="social-icon"><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+			</div>
+		</div>
+	</div>
+	<div class="trademark p-2">
+		<p>&copy; Buzz-Feed &trade;</p>
+	</div>
+</div>
+	<!-- <script type="javascript" src="{% static 'blog/jquery.js' %}"></script> -->
+</body>
+</html>

@@ -1,0 +1,8 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+	<h2 class="border-bottom text-center text-danger m-4 p-2">You've Been Logged Out</h2>
+	<div class="pt-3 mt-5" style ="text-align: center;">
+		<a class="btn btn-outline-info" href="{% url 'login' %}">Sign In</a>
+	</div>
+{% endblock content %}
