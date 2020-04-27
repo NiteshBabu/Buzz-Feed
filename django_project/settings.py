@@ -144,4 +144,4 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('BUZZFEED_EMAIL')
 EMAIL_HOST_PASSWORD = os.environ.get('BUZZFEED_EMAIL_PASSWORD')
 
-django_heroku.setting(local())
+django_heroku.settings(local())
