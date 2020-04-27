@@ -145,3 +145,5 @@ EMAIL_HOST_USER = os.environ.get('BUZZFEED_EMAIL')
 EMAIL_HOST_PASSWORD = os.environ.get('BUZZFEED_EMAIL_PASSWORD')
 
 django_heroku.settings(locals())
+
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
