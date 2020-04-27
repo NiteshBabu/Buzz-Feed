@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-# from . import email
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -21,11 +20,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','z1(t$72ecr7k0juae*qbp-75i5bicyu&_^3$+c&)^@&7+2(h8o')
+# SECRET_KEY = 'z1(t$72ecr7k0juae*qbp-75i5bicyu&_^3$+c&)^@&7+2(h8o'
+SECRET_KEY = os.environ.get('SECRET_KEY')
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+  'buzzfeed-niteshbabu.herokuapp.com'
+]
 
 
 # Application definition
@@ -137,6 +140,6 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-# EMAIL_HOST_USER = email.mail
-# EMAIL_HOST_PASSWORD = email.password
+EMAIL_HOST_USER = os.environ.get(BUZZFEED_EMAIL)
+EMAIL_HOST_PASSWORD = os.environ.get(BUZZFEED_EMAIL_PASSWORD)
 
