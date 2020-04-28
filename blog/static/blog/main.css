@@ -9,7 +9,7 @@
 
 .user-login{
 	display: flex;
-	margin-left: 55rem;
+	/*margin-left: 55rem;*/
 	font-weight: 600;
 	font-size: 1.1rem;
 }
@@ -23,14 +23,14 @@ article{
 }
 
 .login-form{
-	margin: 1rem 0 10rem 6rem;
+	/*margin: 1rem 0 10rem 6rem;*/
 }
 
 .profile{
 	/*background: #ddd;*/
-	margin:0 1rem;
+	margin:0 5rem;
 }
-
+/*
 .profile-name{
 	position: absolute;
 	top:0;
@@ -38,7 +38,7 @@ article{
 	font-weight: 600;
 	font-size: 18px;
 	border-bottom: 1px solid white;
-}
+}*/
 
 .post-detail{
 	margin:1rem 0 30rem 0;
@@ -61,12 +61,11 @@ article{
 }
 
 .sidebar{
-	padding: 10rem 5rem;
+	padding: 8rem .5rem;
 	background: tomato;
 	text-align: center;
 	color: yellow;
 	text-decoration: underline;
-	margin: 1rem 10rem 0 2rem;
 }
 
 .sidebar > h5{
@@ -85,19 +84,12 @@ legend{
 .footer{
 	width: 100%;
 	background: #343a40;
-	opacity: 80%;
+	opacity: 90%;
 	color: #fff;
 	font-size: 15px;
 }
 
-.footer-details{
-	display: flex;
-}
-
 .contact-details{
-	/*border: 1px solid #fff;*/
-	margin-right: 25rem;
-	margin-left: 10rem;
 	list-style: none;
 }
 
@@ -106,14 +98,23 @@ legend{
 }
 
 .sitemap{ 
+	display: flex;
 	margin-top: 1.5rem;
-	color: white;
+	flex-direction: column;
+	align-items: center;
+	list-style: none;
+}
+
+.sitemap a{
+	color: #fff;
+}
+.sitemap a:hover{
+	color: tomato;
 }
 
 .social-icons{
 	display: flex;
-	list-style: none;
-	margin-left: 3rem;
+	margin-top: 2rem;
 }
 
 .social-icons > li{
@@ -126,8 +127,8 @@ legend{
 
 
 /*Media Queries*/
-@media only screen and (max-width: 600px) {
+/*@media only screen and (max-width: 600px) {
   .main-block{
   	width :100%;
   }
-}
+*/}

@@ -19,10 +19,9 @@
 </head>
 
 <body>
-
-	<nav class=" navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand" href="/">Buzz-Feed</a>
-	    <ul class="navbar-nav">
+	<nav class=" navbar navbar-expand-lg navbar-dark bg-dark row">
+		<a class="navbar-brand col-lg-8 ml-2" href="/">Buzz-Feed</a>
+	    <ul class="navbar-nav col-lg-4 ml-4">
 	      <li class="nav-item">
 	        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
 	     	</li>
@@ -30,26 +29,18 @@
         	<a class="nav-link" href="{% url 'Blog-About' %}">About</a>
       	</li>
 	    {% if user.is_authenticated %}
-	    	<div class="profile-name">	
-					<li class="nav-item">
-						<a class="nav-link" href="{% url 'profile' %}">{{user}}</a>
-					</li>
-	    	</div>
-	      <div class="user-login">
 			    <li class="nav-item">
 						<a class="nav-link" href="{% url 'post-create' %}">New Post</a>
 			    </li>
 		      <li class="nav-item">
 		       	<a class="nav-link" href="{% url 'logout' %}">Logout</a>
 			    </li>
-				</div>
+					<li class="nav-item">
+						<a class="nav-link border-bottom" href="{% url 'profile' %}">{{user}}</a>
+					</li>
+	    	<!-- <div class="profile-name">	
+	    	</div> -->
 			{% else %}
-				<div class="user-login">	
-			    	<!-- <div class="profile-name">	
-						<li class="nav-item">
-							<a class="nav-link" href="#"></a>
-						</li>
-			    	</div> -->
 					<li class="nav-item">
 				    	<a class="nav-link" href="{% url 'login' %}">Login</a>
 					</li>
@@ -60,10 +51,11 @@
 			{% endif %}
 		  </ul>
 	</nav>
+<div class="container-fluid">
 	
 	{% block extra %} {% endblock extra %}	
-	<div class="main-block mb-4">
-		<div class="post-content col-md-6">
+	<div class="main-block m-2 row">
+		<div class="post-content col-md-8 col-sm-12 mt-2">
 			{% if messages %}
 			{% for message in messages %}
 				<div class="alert alert-{{message.tags}} p-2 mt-3">
@@ -73,7 +65,7 @@
 			{% endif %}
 			{% block content %} {% endblock content %}	
 		</div>
-		<div class="sidebar-wrapper">	
+		<div class="sidebar-wrapper col-md-4 col-sm-12 mt-2">	
 			<div class="sidebar ">
 				<h3>Share With Us</h3>
 				<h5>Song Stuffs</h5>
@@ -82,36 +74,56 @@
 			</div>	
 		</div>
 	</div>
+<!-- 
+	<div class="row">
+		<div class="col-lg-3 col-md-6 col-sm-12" style="background: tomato">tomato</div>
+		<div class="col-lg-3 col-md-6 col-sm-12" style="background: pink">pink</div>
+		<div class="col-lg-3 col-md-6 col-sm-12" style="background: aqua">aqua</div>
+		<div class="col-lg-3 col-md-6 col-sm-12" style="background: blue">blue</div>
+	</div> -->
+</div>
 
-
-<div class="footer text-center">
-	<h5 class="pt-2">Created With <span id="heart">&hearts;</span> By NiteshBabu</h2>
-	<div class="footer-details text-center">
-		<div class="contact-details">
-			<p class="border-bottom ml-4 mr-2">Contact Details</p>
-			<ul style="list-style: none;" class="text-left ">
+<div class="footer container-fluid">
+	<h5 class="pt-2 text-center">Created With <span id="heart">&hearts;</span> By NiteshBabu</h2>
+	<div class="footer-details row">
+		<div class="contact-details col-lg-6 col-md-12">
+			<p class="border-bottom text-center">Contact Details</p>
+			<ul style="list-style: none;" class="text-center">
 				<li>Email : niteshbabusharma@gmail.com</li>
 				<li>Phone : +91 700-415-2577</li>
 				<li>New Delhi, India</li>
 			</ul>
 		</div>
-		<div class="sitemap">
-			<ul style="list-style: none">
-				<li><a href="{% url 'Blog-Home' %}">Home</a></li>
-				<li><a href="/about">About</a></li>
-			</ul>
-			<div class="social-icons">
-				<li class="social-icon"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>			
-				<li class="social-icon"><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-				<li class="social-icon"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-				<li class="social-icon"><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-			</div>
+		<div class="sitemap col-lg-6 col-md-12">
+				<div class="">
+					<li><a href="{% url 'Blog-Home' %}">Home</a></li>
+					<li><a href="/about">About</a></li>
+				</div>
+				<div class="social-icons">
+					<li class="social-icon"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>			
+					<li class="social-icon"><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+					<li class="social-icon"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+					<li class="social-icon"><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+				</div>
 		</div>
 	</div>
 	<div class="trademark p-2">
-		<p>&copy; Buzz-Feed &trade;</p>
+		<p class="text-center">&copy; Buzz-Feed &trade;</p>
 	</div>
 </div>
+	
+	
 	<script type="javascript" src="{% static 'blog/jquery.js' %}"></script>
 </body>
+<!-- <body>
+	<div class="container" style="">
+		<div class="row">
+			<div class="col bg-primary"><p>container-1</p></div>
+			<div class="col bg-dark"><p>container-2</p></div>
+			<div class="col bg-primary"><p>container-3</p></div>
+			<div class="col bg-dark"><p>container-4</p></div>
+			<div class="col bg-primary"><p>container-5</p></div>
+		</div>
+	</div>
+</body> -->
 </html>
