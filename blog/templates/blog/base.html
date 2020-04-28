@@ -14,106 +14,81 @@
 
 	<link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'blog/bootstrap.css' %}">
-	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<!-- <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"> -->
 	<script type="text/javascript" src="{% static 'blog/main.js' %}"></script>
 </head>
 
 <body>
+
+<div class="container-fluid">
+
 	<nav class=" navbar navbar-expand-lg navbar-dark bg-dark row">
 		<a class="navbar-brand col-lg-8 ml-2" href="/">Buzz-Feed</a>
 	    <ul class="navbar-nav col-lg-4 ml-4">
-	      <li class="nav-item">
-	        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-	     	</li>
-      	<li class="nav-item">
-        	<a class="nav-link" href="{% url 'Blog-About' %}">About</a>
-      	</li>
+	      <li class="nav-item"><a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a></li>
+      	<li class="nav-item"><a class="nav-link" href="{% url 'Blog-About' %}">About</a></li>
 	    {% if user.is_authenticated %}
-			    <li class="nav-item">
-						<a class="nav-link" href="{% url 'post-create' %}">New Post</a>
-			    </li>
-		      <li class="nav-item">
-		       	<a class="nav-link" href="{% url 'logout' %}">Logout</a>
-			    </li>
-					<li class="nav-item">
-						<a class="nav-link" href="{% url 'profile' %}">{{user}}</a>
-					</li>
-	    	<!-- <div class="profile-name">	
-	    	</div> -->
+			    <li class="nav-item"><a class="nav-link" href="{% url 'post-create' %}">New Post</a></li>
+		      <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+					<li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">{{user}}</a></li>
 			{% else %}
-					<li class="nav-item">
-				    	<a class="nav-link" href="{% url 'login' %}">Login</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="{% url 'register' %}">Register</a>
-					</li>
-				</div>
+					<li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+					<li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
 			{% endif %}
 		  </ul>
 	</nav>
-<div class="container-fluid">
-	
+
 	{% block extra %} {% endblock extra %}	
-	<div class="main-block m-2 row">
-		<div class="post-content col-md-8 col-sm-12 mt-2">
-			{% if messages %}
-			{% for message in messages %}
-				<div class="alert alert-{{message.tags}} p-2 mt-3">
-					{{ message }}
-				</div>
-			{% endfor %}
-			{% endif %}
-			{% block content %} {% endblock content %}	
-		</div>
-		<div class="sidebar-wrapper col-md-4 col-sm-12 mt-2">	
-			<div class="sidebar ">
-				<h3>Share With Us</h3>
-				<h5>Song Stuffs</h5>
-				<h5>Movie Stuff</h5>
-				<h5>What's Cookin Now</h5>
-			</div>	
+	<div class="container mt-3 mb-3">
+		<div class="row">
+			<div class="post-content col-md-8 col-sm-12">
+				{% if messages %}
+				{% for message in messages %}
+					<div class="alert alert-{{message.tags}} p-2 mt-3">{{ message }}</div>
+				{% endfor %}
+				{% endif %}
+				{% block content %} {% endblock content %}	
+			</div>
+			<div class="sidebar-wrapper col-md-4 col-sm-12">
+				<div class="sidebar">
+					<h3>Share With Us</h3>
+					<h5>Song Stuffs</h5>
+					<h5>Movie Stuff</h5>
+					<h5>What's Cookin Now</h5>
+				</div>	
+			</div>
 		</div>
 	</div>
-<!-- 
-	<div class="row">
-		<div class="col-lg-3 col-md-6 col-sm-12" style="background: tomato">tomato</div>
-		<div class="col-lg-3 col-md-6 col-sm-12" style="background: pink">pink</div>
-		<div class="col-lg-3 col-md-6 col-sm-12" style="background: aqua">aqua</div>
-		<div class="col-lg-3 col-md-6 col-sm-12" style="background: blue">blue</div>
-	</div> -->
-</div>
+		
 
-<div class="footer">
-	<h5 class="pt-2 text-center">Created With <span id="heart">&hearts;</span> By NiteshBabu</h2>
-	<div class="footer-details row">
-		<div class="contact-details col-lg-6 col-md-12">
-			<p class="border-bottom text-center">Contact Details</p>
-			<ul style="list-style: none;" class="text-center">
-				<li>Email : niteshbabusharma@gmail.com</li>
-				<li>Phone : +91 700-415-2577</li>
-				<li>New Delhi, India</li>
-			</ul>
-		</div>
-		<div class="sitemap col-lg-6 col-md-12">
-				<div class="">
+	<div class="footer">
+		<h5 class="pt-2 text-center">Created With <span id="heart">&hearts;</span> By NiteshBabu</h5>
+		<div class="footer-details row">
+			<div class="contact-details col-lg-6 col-md-12">
+				<p class=" text-center">Contact Details</p>
+				<ul style="list-style: none;" class="text-center">
+					<li>Email : niteshbabusharma@gmail.com</li>
+					<li>Phone : +91 700-415-2577</li>
+					<li>New Delhi, India</li>
+				</ul>
+			</div>
+			<div class="sitemap col-lg-6 col-md-12">
 					<li><a href="{% url 'Blog-Home' %}">Home</a></li>
 					<li><a href="/about">About</a></li>
-				</div>
 				<div class="social-icons">
 					<li class="social-icon"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>			
 					<li class="social-icon"><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
 					<li class="social-icon"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
 					<li class="social-icon"><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
 				</div>
+			</div>
+		</div>
+		<div class="trademark p-2">
+			<p class="text-center">&copy; Buzz-Feed &trade;</p>
 		</div>
 	</div>
-	<div class="trademark p-2">
-		<p class="text-center">&copy; Buzz-Feed &trade;</p>
-	</div>
 </div>
-	
-	
-	<script type="javascript" src="{% static 'blog/jquery.js' %}"></script>
+<script type="javascript" src="{% static 'blog/jquery.js' %}"></script>
 </body>
 <!-- <body>
 	<div class="container" style="">

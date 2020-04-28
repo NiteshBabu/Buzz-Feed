@@ -3,8 +3,8 @@
 
 {% block content %}
 {% if not user.is_authenticated %}
-	<div class="content-section col-md-8 login-form text-warning">
-		<form method="POST">
+	<div class="content-section text-warning">
+		<form method="POST">	
 			{% csrf_token %}
 			<fieldset class="form-group">
 				<legend class="border-bottom mb-3 pb-1 ">Sign In</legend>
